@@ -43,6 +43,7 @@
         android:gravity="center"
         android:hint="Mi edad"
         android:inputType="number"
+        android:id="@+id/idEdad"
         />
 
     <TextView
@@ -52,6 +53,7 @@
         android:padding="20dp"
         android:gravity="center"
         android:textColor="@color/black"
+        android:id="@+id/idLabel"
         />
 
     <Button
@@ -60,5 +62,6 @@
         android:layout_margin="16dp"
         android:textSize="16sp"
         android:text="@string/app_calcular"
+        android:id="@+id/idCalcular"
         />
 </LinearLayout>

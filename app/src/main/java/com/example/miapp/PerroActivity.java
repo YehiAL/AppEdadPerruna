@@ -1,6 +1,11 @@
 package com.example.miapp;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,15 +15,31 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class PerroActivity extends AppCompatActivity {
 
+    private EditText edad;
+    private TextView resultadoText;
+    private Button enviar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_perro);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        edad = (EditText) findViewById(R.id.idEdad);
+        resultadoText = (TextView) findViewById(R.id.idLabel);
+        enviar = (Button) findViewById(R.id.idCalcular);
+
+        enviar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String edadvar = edad.getText().toString();
+                if (!edadvar.isEmpty()){
+                    int edadInt = Integer.parseInt(edadvar);
+                    int resultado = edadInt * 7;
+                    String resultadoString = "Si fueras perro, tu edad seria de : "+ resultado + " años";
+                    resultadoText.setText(resultadoString);
+                }else{
+                    Toast.makeText(PerroActivity.this,"Debes insertar tu edad sapo y la ctmre",Toast.LENGTH_SHORT).show();
+                }
+            }
         });
     }
 }
